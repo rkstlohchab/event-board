@@ -1,0 +1,435 @@
+/* Box model: include padding and borders in every element's width. */
+* {
+  box-sizing: border-box;
+}
+
+/* Design system: keep the page palette and type scale in one place. */
+:root {
+  --brand: #c94f2d;
+  --brand-deep: hsl(14 64% 28%);
+  --accent: rgb(244 183 64);
+  --ink: #24313a;
+  --muted: rgb(82 96 105);
+  --paper: #fffaf3;
+  --surface: #ffffff;
+  --line: #e4d8ca;
+  --shadow: 0 2px 8px rgb(0 0 0 / 8%);
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --type-small: 0.875rem;
+  --type-body: 1rem;
+  --type-h3: 1.25rem;
+  --type-h2: 1.75rem;
+  --type-h1: clamp(1.5rem, 4vw, 3rem);
+}
+
+/* Mobile-first page layout: stack the main regions on small screens. */
+body {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "header"
+    "nav"
+    "main"
+    "footer";
+  min-height: 100vh;
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: var(--type-body);
+  line-height: 1.5;
+}
+
+p {
+  max-width: 65ch;
+}
+
+/* Responsive images: keep media inside its container. */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.skip-link {
+  position: absolute;
+  top: -3rem;
+  left: var(--space-2);
+  z-index: 2;
+  padding: var(--space-1) var(--space-2);
+  background: var(--brand-deep);
+  color: var(--surface);
+}
+
+.skip-link:focus {
+  top: var(--space-2);
+}
+
+#site-header {
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: var(--space-2) 5%;
+  background: var(--brand-deep);
+  color: var(--surface);
+}
+
+#site-header figure {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin: 0;
+}
+
+#site-header figure img {
+  width: 4rem;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+#site-header figcaption {
+  font-size: var(--type-h3);
+  font-weight: 700;
+}
+
+/* Navigation: show the compact menu on phones. */
+.site-nav {
+  grid-area: nav;
+  padding: var(--space-1) 5%;
+  background: var(--ink);
+}
+
+.menu-button {
+  display: inline-block;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--accent);
+  border-radius: 0.25rem;
+  background: transparent;
+  color: var(--surface);
+  cursor: pointer;
+}
+
+.nav-links,
+footer nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-links {
+  display: none;
+}
+
+.site-nav a,
+footer a {
+  color: var(--surface);
+  text-decoration: none;
+}
+
+.site-nav a:hover,
+.site-nav a:focus,
+footer a:hover,
+footer a:focus {
+  color: var(--accent);
+}
+
+/* Box model: center and cap the reading width. */
+main {
+  grid-area: main;
+  width: min(90%, 60rem);
+  margin: 0 auto;
+  padding: var(--space-4) 0;
+}
+
+/* Banner: use a fluid width, overlay, and readable heading scale. */
+.hero {
+  position: relative;
+  overflow: hidden;
+  width: calc(100% - 1rem);
+  margin: 0 auto var(--space-3);
+  padding: clamp(2rem, 8vw, 5rem) var(--space-3);
+  background: linear-gradient(120deg, var(--brand-deep), var(--brand));
+  color: var(--surface);
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.hero::after {
+  position: absolute;
+  inset: 0;
+  background: rgb(0 0 0 / 40%);
+  content: "";
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.eyebrow {
+  margin-top: 0;
+  color: var(--accent);
+  font-size: var(--type-small);
+  font-weight: 700;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+}
+
+h1 {
+  max-width: 18ch;
+  margin-top: 0;
+  font-size: var(--type-h1);
+}
+
+h2 {
+  font-size: var(--type-h2);
+}
+
+h3 {
+  font-size: var(--type-h3);
+}
+
+.hero-quote {
+  max-width: 50ch;
+  margin-bottom: 0;
+  font-style: italic;
+}
+
+details,
+.events,
+#important-info,
+#submit {
+  margin: 0 0 var(--space-3);
+  padding: var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+details summary {
+  color: var(--brand-deep);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.events {
+  border-top: 0.25rem solid var(--brand);
+}
+
+.section-title,
+#submit h2 {
+  margin-top: 0;
+  color: var(--brand-deep);
+}
+
+/* Card grid: auto-fit cards without a media query. */
+.events > ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: var(--space-2);
+  margin: var(--space-3) 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Card component: padding, border, radius, margin, and soft shadow. */
+.events article {
+  min-height: 100%;
+  margin: 0;
+  padding: var(--space-2);
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.events article h3 {
+  margin-top: 0;
+  color: var(--brand-deep);
+}
+
+.events article p {
+  margin: 0.25rem 0;
+  color: var(--muted);
+  font-size: var(--type-small);
+}
+
+.schedule {
+  width: 100%;
+  margin-top: var(--space-2);
+  border-collapse: collapse;
+}
+
+.schedule caption {
+  margin-bottom: var(--space-1);
+  font-weight: 700;
+  text-align: left;
+}
+
+.schedule th,
+.schedule td {
+  padding: var(--space-1);
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+
+#important-info {
+  border-left: 0.25rem solid var(--accent);
+}
+
+#important-info h2 {
+  margin-top: 0;
+}
+
+form {
+  display: grid;
+  gap: var(--space-1);
+}
+
+label,
+legend {
+  font-weight: 700;
+}
+
+input:not([type="radio"]):not([type="checkbox"]),
+select,
+textarea {
+  width: 100%;
+  padding: 0.625rem;
+  border: 1px solid var(--line);
+  border-radius: 0.25rem;
+  background: var(--surface);
+  color: var(--ink);
+}
+
+textarea {
+  min-height: 6rem;
+}
+
+fieldset {
+  margin: var(--space-1) 0;
+  padding: var(--space-2);
+  border: 1px solid var(--line);
+  border-radius: 0.25rem;
+}
+
+button[type="submit"] {
+  justify-self: start;
+  margin-top: var(--space-1);
+  padding: 0.75rem 1.5rem;
+  border: 0;
+  border-radius: 0.25rem;
+  background: var(--brand);
+  color: var(--surface);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+button[type="submit"]:hover,
+button[type="submit"]:focus {
+  background: var(--brand-deep);
+}
+
+footer {
+  grid-area: footer;
+  padding: var(--space-4) 5%;
+  background: var(--ink);
+  color: var(--surface);
+  text-align: center;
+}
+
+footer nav ul {
+  justify-content: center;
+  margin-bottom: var(--space-2);
+}
+
+footer p {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.desktop-note {
+  display: none;
+}
+
+/* Responsive breakpoint: reveal links and add a second card column. */
+@media (min-width: 40rem) {
+  .menu-button {
+    display: none;
+  }
+
+  .nav-links {
+    display: flex;
+  }
+
+  .events > ul {
+    grid-template-columns: repeat(2, minmax(15rem, 1fr));
+  }
+}
+
+/* Responsive breakpoint: place the event list beside supporting panels. */
+@media (min-width: 64rem) {
+  main {
+    display: grid;
+    align-items: start;
+    grid-template-columns: minmax(0, 2fr) minmax(14rem, 1fr);
+    grid-template-areas:
+      "hero hero"
+      "events faq"
+      "events info"
+      "submit submit";
+    gap: var(--space-3);
+  }
+
+  .hero {
+    grid-area: hero;
+  }
+
+  main > details {
+    grid-area: faq;
+    margin-bottom: 0;
+  }
+
+  .events {
+    grid-area: events;
+    margin-bottom: 0;
+  }
+
+  #important-info {
+    grid-area: info;
+    margin-bottom: 0;
+  }
+
+  #submit {
+    grid-area: submit;
+  }
+
+  .desktop-note {
+    display: block;
+  }
+}
