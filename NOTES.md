@@ -66,9 +66,9 @@ The hero and submit regions span both columns. The events region spans two rows 
 
 The project includes `README.md`, the final `index.html`, and the final `style.css`. Git should be initialized in this folder with several descriptive commits so the history shows the work. A GitHub repository named `event-board` and its Pages URL should be added here after publishing.
 
-Repository link: to be added after GitHub authentication and push.
+Repository link: https://github.com/rkstlohchab/event-board
 
-Pages link: to be added if GitHub Pages is enabled.
+Pages link: https://rkstlohchab.github.io/event-board/
 
 ## Code appendix
 
