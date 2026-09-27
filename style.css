@@ -1,7 +1,9 @@
+/* Box model: include padding and borders in every element's width. */
 * {
   box-sizing: border-box;
 }
 
+/* Design system: keep the page palette and type scale in one place. */
 :root {
   --brand: #c94f2d;
   --brand-deep: hsl(14 64% 28%);
@@ -23,6 +25,7 @@
   --type-h1: clamp(1.5rem, 4vw, 3rem);
 }
 
+/* Mobile-first page layout: stack the main regions on small screens. */
 body {
   display: grid;
   grid-template-columns: 1fr;
@@ -44,6 +47,7 @@ p {
   max-width: 65ch;
 }
 
+/* Responsive images: keep media inside its container. */
 img {
   max-width: 100%;
   height: auto;
@@ -100,6 +104,7 @@ textarea {
   font-weight: 700;
 }
 
+/* Navigation: show the compact menu on phones. */
 .site-nav {
   grid-area: nav;
   padding: var(--space-1) 5%;
@@ -144,6 +149,7 @@ footer a:focus {
   color: var(--accent);
 }
 
+/* Box model: center and cap the reading width. */
 main {
   grid-area: main;
   width: min(90%, 60rem);
@@ -151,6 +157,7 @@ main {
   padding: var(--space-4) 0;
 }
 
+/* Banner: use a fluid width, overlay, and readable heading scale. */
 .hero {
   position: relative;
   overflow: hidden;
@@ -168,7 +175,6 @@ main {
   inset: 0;
   background: rgb(0 0 0 / 40%);
   content: "";
-  pointer-events: none;
 }
 
 .hero > * {
@@ -241,6 +247,7 @@ details summary {
   color: var(--brand-deep);
 }
 
+/* Card grid: auto-fit cards without a media query. */
 .events > ul {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
@@ -250,6 +257,7 @@ details summary {
   list-style: none;
 }
 
+/* Card component: padding, border, radius, margin, and soft shadow. */
 .events article {
   min-height: 100%;
   margin: 0;
@@ -369,6 +377,7 @@ footer p {
   display: none;
 }
 
+/* Responsive breakpoint: reveal links and add a second card column. */
 @media (min-width: 40rem) {
   .menu-button {
     display: none;
@@ -383,6 +392,7 @@ footer p {
   }
 }
 
+/* Responsive breakpoint: place the event list beside supporting panels. */
 @media (min-width: 64rem) {
   main {
     display: grid;
