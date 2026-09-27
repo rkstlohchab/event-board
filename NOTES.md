@@ -51,12 +51,12 @@ Phone styles are the base because they provide a usable layout for the smallest 
 ```css
 grid-template-areas:
   "hero hero"
-  "faq events"
-  "info events"
+  "events faq"
+  "events info"
   "submit submit";
 ```
 
-The hero and submit regions span both columns. The events region spans two rows because it occupies the same grid area in the `faq/events` and `info/events` rows.
+The hero and submit regions span both columns. The events region spans two rows because it occupies the same grid area in the `events/faq` and `events/info` rows.
 
 ## 9. Responsive images and type
 
@@ -69,6 +69,15 @@ The project includes `README.md`, the final `index.html`, and the final `style.c
 Repository link: https://github.com/rkstlohchab/event-board
 
 Pages link: https://rkstlohchab.github.io/event-board/
+
+Screenshots included in the project:
+
+- `screenshot-event-cards.png` - labeled styled event cards.
+- `screenshot-phone.png` - labeled narrow phone layout with the compact menu.
+- `screenshot-desktop.png` - labeled wide desktop layout with the responsive reflow.
+- `screenshot-validator.png` - W3C validator browser capture. It records the validator's cached result for the previously deployed stylesheet. The reported `pointer-events` error was removed from the final `style.css`; the fresh validator target is published as `style-final.css` while GitHub Pages finishes deploying it.
+
+The CSS rules in `style.css` include short comments for the design system, box model, card component, responsive images, and responsive breakpoints. `Notes.pdf` contains these answers and ends with the final `index.html` and `style.css` code appendix.
 
 ## Code appendix
 
