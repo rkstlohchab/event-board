@@ -1,0 +1,90 @@
+body {
+  background-color: #0f172a;
+  color: #f1f5f9;
+}
+
+#site-header {
+  background-color: #020617;
+  border-bottom: 1px solid #1e293b;
+}
+
+.hero {
+  background-color: #020617;
+}
+
+details {
+  background-color: #1e293b;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+details summary {
+  color: #ff8a5c;
+}
+
+.events {
+  background-color: #1e293b;
+  border-color: #334155;
+  border-top: 4px solid #ff8a5c;
+}
+
+.section-title {
+  color: #ff8a5c;
+}
+
+.events article {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+}
+
+.events article h3 {
+  color: #ff8a5c;
+}
+
+#important-info {
+  background-color: #1e293b;
+  border-left-color: #f59e0b;
+  color: #f1f5f9;
+}
+
+#submit {
+  background-color: #1e293b;
+  border-color: #334155;
+}
+
+#submit h2 {
+  color: #ff8a5c;
+}
+
+fieldset {
+  border-color: #334155;
+}
+
+legend {
+  color: #ff8a5c;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+  background-color: #0f172a;
+  color: #ffffff;
+  border: 1px solid #334155;
+}
+
+button[type="submit"] {
+  background-color: #ff8a5c;
+  color: #0f172a;
+}
+
+button[type="submit"]:hover {
+  background-color: #ffa580;
+}
+
+footer {
+  background-color: #020617;
+  border-top: 1px solid #1e293b;
+}

@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --brand: #b53e12;
+  --text: #222222;
+}
+
+body {
+  font-family: Verdana, sans-serif;
+  color: var(--text);
+  background-color: #fdfcfb;
+}
+
+h1, h2, h3 {
+  font-family: Georgia, serif;
+  color: var(--brand);
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: var(--text);
+}
+
+p {
+  line-height: 1.5;
+}
+
+a {
+  color: var(--brand);
+}
+
+nav a {
+  display: inline-block;
+  padding: 6px 8px;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:focus {
+  outline: 2px solid navy;
+}
+
+a:visited {
+  color: purple;
+}
