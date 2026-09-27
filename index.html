@@ -1,284 +1,112 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Campus Event Board | IIIT Vadodara Events</title>
-    <meta name="description" content="Explore upcoming campus events, festivals, workshops, and competitions at IIIT Vadodara.">
-    <link rel="icon" href="favicon.png">
-    <link rel="stylesheet" href="style.css">
-    <meta property="og:title" content="Campus Event Board | IIIT Vadodara Events">
-    <meta property="og:description" content="Explore upcoming campus events, festivals, workshops, and competitions at IIIT Vadodara.">
-    <meta property="og:image" content="og-image.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore upcoming festivals, workshops, sports, and competitions at IIIT Vadodara.">
+  <meta property="og:title" content="Campus Event Board | IIIT Vadodara">
+  <meta property="og:description" content="One place for the events bringing our campus together.">
+  <meta property="og:image" content="og-image.png">
+  <title>Campus Event Board | IIIT Vadodara</title>
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    <header id="site-header">
-        <figure>
-            <img src="image.png" width="100" alt="Campus Event Board Logo">
-            <figcaption>campus event board logo</figcaption>
-        </figure>
+  <header class="site-header">
+    <a class="brand" href="#main-content" aria-label="Campus Event Board home">
+      <img src="image.png" width="280" height="280" alt="IIIT Vadodara emblem">
+      <span><strong>Campus Event Board</strong><small>IIIT Vadodara</small></span>
+    </a>
+  </header>
 
-    </header>
+  <nav class="site-nav" aria-label="Main navigation">
+    <button class="menu-button" type="button" aria-label="Open navigation menu" aria-expanded="false">Menu</button>
+    <ul class="nav-links">
+      <li><a href="#upcoming-events" aria-current="page">Events</a></li>
+      <li><a href="#important-info">Important information</a></li>
+      <li><a href="#submit">Submit an event</a></li>
+    </ul>
+  </nav>
 
-    <nav class="site-nav" aria-label="Main navigation">
-        <button class="menu-button" type="button" aria-label="Open navigation menu">Menu</button>
-        <ul class="nav-links">
-            <li><a href="#upcoming-events" class="active">Events</a></li>
-            <li><a href="#important-info">Important Info</a></li>
-            <li><a href="#submit">Submit an Event</a></li>
-        </ul>
-    </nav>
+  <main id="main-content">
+    <section class="hero" aria-labelledby="welcome-heading">
+      <p class="eyebrow">August - September 2026</p>
+      <h1 id="welcome-heading">Find your next campus moment.</h1>
+      <p>Festivals, workshops, competitions, and sports - all in one place for the IIIT Vadodara community.</p>
+      <blockquote>Every great fest starts with someone who showed up first.</blockquote>
+    </section>
 
-    <main id="main-content">
-        <section class="hero" aria-labelledby="welcome-heading">
-            <p class="eyebrow">IIIT Vadodara</p>
-            <h1 id="welcome-heading">Welcome to our Campus Event Board</h1>
-            <p>Here you can find information about upcoming college events.</p>
-            <blockquote class="hero-quote">Every great fest starts with someone who showed up first.</blockquote>
-        </section>
+    <details class="faq">
+      <summary>Do campus events have an entry fee?</summary>
+      <p>No. Campus-hosted events are free for enrolled students unless an event card says otherwise.</p>
+    </details>
 
-        <details>
-            <summary>Is there an entry fee for sports and technical fests?</summary>
-            <p>No, all campus-hosted events are free of charge for enrolled college students.</p>
-        </details>
+    <section id="upcoming-events" class="events" aria-labelledby="events-heading">
+      <div class="section-heading">
+        <div><p class="eyebrow">On the calendar</p><h2 id="events-heading">Upcoming events</h2></div>
+        <p>New events are added every week.</p>
+      </div>
 
-        <section id="upcoming-events" class="events">
-            <h2 class="section-title">Upcoming Events</h2>
-            <p>Browse everything happening on campus this month.</p>
-            <p>New events are added every week, so check back often.</p>
+      <ul class="event-grid">
+        <li><article class="event-card"><time datetime="2026-08-15"><span>15</span> Aug</time><div><h3>Independence Day Celebration</h3><p>College Ground</p><p>9:00 AM</p></div></article></li>
+        <li><article class="event-card"><time datetime="2026-08-20"><span>20</span> Aug</time><div><h3>Technical Fest</h3><p>Seminar Hall</p><p>10:00 AM</p></div></article></li>
+        <li><article class="event-card"><time datetime="2026-08-25"><span>25</span> Aug</time><div><h3>Coding Competition</h3><p>Computer Lab</p><p>11:00 AM</p></div></article></li>
+        <li><article class="event-card"><time datetime="2026-08-30"><span>30</span> Aug</time><div><h3>Sports Day</h3><p>College Ground</p><p>8:00 AM</p></div></article></li>
+        <li><article class="event-card"><time datetime="2026-09-05"><span>05</span> Sep</time><div><h3>Cultural Fest</h3><p>Auditorium</p><p>4:00 PM</p></div></article></li>
+        <li><article class="event-card"><time datetime="2026-09-10"><span>10</span> Sep</time><div><h3>AI Workshop</h3><p>College Campus</p><p>2:00 PM</p></div></article></li>
+      </ul>
 
-            <ul>
-                <li>
-                <article>
-                <h3>Independence Day Celebration</h3>
-                <p>Date: 15 August 2026</p>
-                <p>Venue: College Ground</p>
-                <p>Time: 9:00 AM</p>
-                </article>
-                </li>
+      <div class="table-wrap">
+        <table class="schedule">
+          <caption>Full event schedule</caption>
+          <thead><tr><th scope="col">Event</th><th scope="col">Date</th><th scope="col">Venue</th><th scope="col">Time</th></tr></thead>
+          <tbody>
+            <tr><td>Independence Day Celebration</td><td>15 August</td><td>College Ground</td><td>9:00 AM</td></tr>
+            <tr><td>Technical Fest</td><td>20 August</td><td>Seminar Hall</td><td>10:00 AM</td></tr>
+            <tr><td>Coding Competition</td><td>25 August</td><td>Computer Lab</td><td>11:00 AM</td></tr>
+            <tr><td>Sports Day</td><td>30 August</td><td>College Ground</td><td>8:00 AM</td></tr>
+            <tr><td>Cultural Fest</td><td>5 September</td><td>Auditorium</td><td>4:00 PM</td></tr>
+            <tr><td>AI Workshop</td><td>10 September</td><td>College Campus</td><td>2:00 PM</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
 
-                <li>
-                <article>
-                <h3>Technical Fest</h3>
-                <p>Date: 20 August 2026</p>
-                <p>Venue: Seminar Hall</p>
-                <p>Time: 10:00 AM</p>
-                </article>
-                </li>
+    <aside id="important-info" aria-labelledby="info-heading">
+      <p class="eyebrow">Before you go</p>
+      <h2 id="info-heading">Important information</h2>
+      <ul><li>Carry your college ID card.</li><li>Register before competitions.</li><li>Reach the venue 15 minutes early.</li></ul>
+      <p class="desktop-note">This note appears only on wider screens to demonstrate <code>display: none</code>. Unlike <code>visibility: hidden</code>, the hidden element takes up no space.</p>
+    </aside>
 
-                <li>
-                <article>
-                <h3>Coding Competition</h3>
-                <p>Date: 25 August 2026</p>
-                <p>Venue: Computer Lab</p>
-                <p>Time: 11:00 AM</p>
-                </article>
-                </li>
+    <section id="submit" aria-labelledby="submit-heading">
+      <div class="section-heading">
+        <div><p class="eyebrow">Have an idea?</p><h2 id="submit-heading">Submit an event</h2></div>
+        <p>Share the basics and the student team will follow up.</p>
+      </div>
 
-                <li>
-                <article>
-                <h3>Sports Day</h3>
-                <p>Date: 30 August 2026</p>
-                <p>Venue: College Ground</p>
-                <p>Time: 8:00 AM</p>
-                </article>
-                </li>
+      <form action="#" method="post">
+        <div class="field"><label for="first-name">First name</label><input id="first-name" name="first-name" type="text" autocomplete="given-name" required></div>
+        <div class="field"><label for="last-name">Last name</label><input id="last-name" name="last-name" type="text" autocomplete="family-name" required></div>
+        <div class="field"><label for="student-id">Student ID</label><input id="student-id" name="student-id" type="text" placeholder="20261651072" required></div>
+        <div class="field"><label for="event-date">Proposed date</label><input id="event-date" name="event-date" type="date" required></div>
+        <div class="field field-wide"><label for="interest">Event category</label><select id="interest" name="interest"><option>Independence Day celebration</option><option>Technical fest</option><option>Coding competition</option><option>Sports day</option><option>Cultural fest</option><option>Workshop</option></select></div>
+        <fieldset><legend>Gender</legend><label class="choice"><input type="radio" name="gender" value="male"> Male</label><label class="choice"><input type="radio" name="gender" value="female"> Female</label><label class="choice"><input type="radio" name="gender" value="prefer-not"> Prefer not to say</label></fieldset>
+        <fieldset><legend>Department</legend><label class="choice"><input type="checkbox" name="department" value="btech"> BTech</label><label class="choice"><input type="checkbox" name="department" value="mtech"> MTech</label><label class="choice"><input type="checkbox" name="department" value="mca"> MCA</label></fieldset>
+        <div class="field"><label for="phone">WhatsApp number</label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
+        <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required></div>
+        <div class="field"><label for="age">Age</label><input id="age" name="age" type="number" min="15" max="100"></div>
+        <div class="field field-wide"><label for="address">Address</label><textarea id="address" name="address" placeholder="Street, city, PIN"></textarea></div>
+        <button class="submit-button" type="submit">Add event</button>
+      </form>
+    </section>
+  </main>
 
-                <li>
-                <article>
-                <h3>Cultural Fest</h3>
-                <p>Date: 5 September 2026</p>
-                <p>Venue: Auditorium</p>
-                <p>Time: 4:00 PM</p>
-                </article>
-                </li>
-
-                <li>
-                <article>
-                <h3>Ai workshop</h3>
-                <p>Date: 10 September 2026</p>
-                <p>Venue: College Campus</p>
-                <p>Time: 2:00 PM</p>
-                </article>
-                </li>
-            </ul>
-
-            <h3 class="schedule-title">Full Schedule</h3>
-            <table class="schedule">
-                <caption>All upcoming events at a glance</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Event</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Venue</th>
-                        <th scope="col">Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Independence Day Celebration</td>
-                        <td>15 August 2026</td>
-                        <td>College Ground</td>
-                        <td>9:00 AM</td>
-                    </tr>
-                    <tr>
-                        <td>Technical Fest</td>
-                        <td>20 August 2026</td>
-                        <td>Seminar Hall</td>
-                        <td>10:00 AM</td>
-                    </tr>
-                    <tr>
-                        <td>Coding Competition</td>
-                        <td>25 August 2026</td>
-                        <td>Computer Lab</td>
-                        <td>11:00 AM</td>
-                    </tr>
-                    <tr>
-                        <td>Sports Day</td>
-                        <td>30 August 2026</td>
-                        <td>College Ground</td>
-                        <td>8:00 AM</td>
-                    </tr>
-                    <tr>
-                        <td>Cultural Fest</td>
-                        <td>5 September 2026</td>
-                        <td>Auditorium</td>
-                        <td>4:00 PM</td>
-                    </tr>
-                    <tr>
-                        <td>Ai workshop</td>
-                        <td>10 September 2026</td>
-                        <td>College Campus</td>
-                        <td>2:00 PM</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <hr>
-        </section>
-
-        <aside id="important-info" aria-labelledby="info-heading">
-            <h2 id="info-heading"><mark>Important Information</mark></h2>
-            <ul>
-                <li>Students must carry their college ID cards.</li>
-                <li>Registration is required for competitions.</li>
-                <li>Students should reach the venue 15 minutes early.</li>
-            </ul>
-        </aside>
-        <br>
-        <br>
-        <hr>
-        
-
-    
-        <section id="submit">
-            <h2 id="reg">Submit an Event</h2>
-            
-            <form method="post" action="#">
-                <label for="name">First Name:</label>
-                <input type="text" id="name" name="name" placeholder="Name" >
-                
-                <label for="l_name">Last Name:</label>
-                <input type="text" id="l_name" name="l_name" placeholder="surname">
-                <br><br>
-        
-                <label for="id">Student id:</label>
-                <input type="text" id="id" name="id" placeholder="eg. 20261651072">
-
-                <br><br>
-                <label for="event_date">Proposed event date:</label>
-                <input type="date" id="event_date" name="event_date">
-
-                <br><br>
-                <label for="interest">select your interest :</label>
-        
-             <select  id="interest" name="interest">
-                    <option>Independence day celebration</option>
-                    <option>technical fest</option>
-                    <option>coding Competition</option>
-                    <option>sports day</option>
-                    <option>cultural fest</option>
-             </select>  <br>       <br>
-        
-        
-            
-        
-            
-        <fieldset>
-            <legend>SELECT YOUR GENDER</legend>
-                <input type="radio" id="male" name="gender" value="male">
-               <label for="male">Male</label>
-               <br>
-               <input type="radio" id="female" name="gender" value="female">
-               <label for="female">Female</label>
-        </fieldset>
-               <br>
-               <br>
-        <fieldset>
-                <legend>CHOOSE YOUR DEPARTMENT</legend>
-               
-               <input type="checkbox" id="btech" name="dep" value="btech">
-               <label for="btech">Btech</label>
-        
-               <input type="checkbox" id="mtech" name="dep" value="mtech">
-               <label for="mtech">Mtech</label>
-        
-               <input type="checkbox" id="mca" name="dep" value="mca">
-               <label for="mca">Mca</label>
-               </fieldset>
-        <BR>
-        <fieldset>
-            <legend>CONTACT DETAILS</legend>
-            <label for="mob_no">Whatsapp number :</label>
-               <input type="tel" id="mob_no">
-               <br><br>
-               <label for="mail">your email id</label>
-               <input type="email" id="mail" placeholder="you@example.com">
-               <br><br>
-
-        <label for="add">address :</label>
-               <textarea id="add" placeholder="Street, city, PIN"></textarea>
-        
-        
-          
-        
-        
-        </fieldset>
-        
-        
-                <br>
-                  <label for="age">Age :</label>
-               <input type="number" id="age" min="0" max="100">
-               <br>
-               <br>
-        
-        
-               <button type="submit" >Add an Event</button>
-                </form>
-        
-         </section>
-        
-        
-    </main>
-
-    <footer >
-        <nav aria-label="Footer navigation">
-            <ul>
-                <li><a href="#upcoming-events">Events</a></li>
-                <li><a href="#important-info">Important Info</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-
-       
-      
-       <a href="https://iiitvadodara.ac.in/#">College Website</a>
-
-
-        <p>© 2026 Campus Event Board</p>
-    </footer>
+  <footer>
+    <nav aria-label="Footer navigation"><ul><li><a href="#upcoming-events">Events</a></li><li><a href="#important-info">Important information</a></li><li><a href="#submit">Submit an event</a></li><li><a href="https://iiitvadodara.ac.in/">College website</a></li></ul></nav>
+    <p><small>&copy; 2026 Campus Event Board &middot; IIIT Vadodara</small></p>
+  </footer>
 </body>
 </html>

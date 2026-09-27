@@ -1,435 +1,341 @@
-/* Box model: include padding and borders in every element's width. */
+/* A6 - Border-box keeps declared widths predictable. */
 * {
   box-sizing: border-box;
 }
 
-/* Design system: keep the page palette and type scale in one place. */
+/* A2, A3, A5 - Named palette, color formats, spacing, and type scale. */
 :root {
-  --brand: #c94f2d;
-  --brand-deep: hsl(14 64% 28%);
-  --accent: rgb(244 183 64);
-  --ink: #24313a;
-  --muted: rgb(82 96 105);
-  --paper: #fffaf3;
+  --brand: #153e75;
+  --brand-deep: hsl(219 70% 18%);
+  --accent: rgb(244 164 45);
+  --accent-soft: #fff1d6;
+  --ink: #17243d;
+  --muted: rgb(79 94 117);
+  --paper: #eef3f9;
   --surface: #ffffff;
-  --line: #e4d8ca;
+  --line: #cad5e2;
+  --overlay: rgb(0 0 0 / 40%);
   --shadow: 0 2px 8px rgb(0 0 0 / 8%);
+  --shadow-strong: 0 1rem 2.5rem rgb(0 0 0 / 14%);
   --space-1: 0.5rem;
   --space-2: 1rem;
   --space-3: 1.5rem;
   --space-4: 2rem;
+  --space-5: 3rem;
   --type-small: 0.875rem;
   --type-body: 1rem;
   --type-h3: 1.25rem;
   --type-h2: 1.75rem;
-  --type-h1: clamp(1.5rem, 4vw, 3rem);
+  --type-h1: clamp(2rem, 7vw, 4.5rem);
 }
 
-/* Mobile-first page layout: stack the main regions on small screens. */
+html { scroll-behavior: smooth; }
+
+/* B2, B5 - The page grid is a single-column mobile-first layout. */
 body {
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-areas:
-    "header"
-    "nav"
-    "main"
-    "footer";
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "header" "nav" "main" "footer";
   min-height: 100vh;
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
   font-size: var(--type-body);
+  font-style: normal;
   line-height: 1.5;
 }
 
-p {
-  max-width: 65ch;
-}
+p { max-width: 65ch; }
+h1, h2, h3, p { text-wrap: pretty; }
+h1, h2, h3 { line-height: 1.15; }
+h1 { max-width: 13ch; margin: 0; font-size: var(--type-h1); letter-spacing: -0.04em; }
+h2 { margin: 0; font-size: var(--type-h2); }
+h3 { font-size: var(--type-h3); }
 
-/* Responsive images: keep media inside its container. */
-img {
-  max-width: 100%;
-  height: auto;
-}
+/* A9, B7 - Images scale without a media query; the emblem is cropped evenly. */
+img { max-width: 100%; height: auto; }
+button, input, select, textarea { font: inherit; }
 
-button,
-input,
-select,
-textarea {
-  font: inherit;
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: 0.2rem solid var(--accent);
+  outline-offset: 0.2rem;
 }
 
 .skip-link {
   position: absolute;
-  top: -3rem;
+  top: -4rem;
   left: var(--space-2);
-  z-index: 2;
+  z-index: 3;
   padding: var(--space-1) var(--space-2);
-  background: var(--brand-deep);
-  color: var(--surface);
+  background: var(--accent);
+  color: var(--brand-deep);
+  font-weight: 800;
 }
 
-.skip-link:focus {
-  top: var(--space-2);
-}
+.skip-link:focus { top: var(--space-2); }
 
-#site-header {
+.site-header {
   grid-area: header;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-2);
   padding: var(--space-2) 5%;
   background: var(--brand-deep);
   color: var(--surface);
 }
 
-#site-header figure {
-  display: flex;
+.brand {
+  display: inline-flex;
   align-items: center;
-  gap: var(--space-1);
-  margin: 0;
+  gap: 0.75rem;
+  color: inherit;
+  text-decoration: none;
 }
 
-#site-header figure img {
-  width: 4rem;
+.brand img {
+  width: 3.5rem;
   aspect-ratio: 1;
-  object-fit: cover;
+  border: 1px solid var(--surface);
   border-radius: 50%;
+  object-fit: cover;
 }
 
-#site-header figcaption {
-  font-size: var(--type-h3);
-  font-weight: 700;
-}
+.brand strong, .brand small { display: block; }
+.brand strong { font-size: var(--type-h3); line-height: 1.1; }
+.brand small { margin-top: 0.2rem; color: var(--accent); }
 
-/* Navigation: show the compact menu on phones. */
+/* B6 - Compact navigation is shown on phones; links are revealed later. */
 .site-nav {
   grid-area: nav;
+  display: flex;
+  align-items: center;
+  min-height: 3.5rem;
   padding: var(--space-1) 5%;
-  background: var(--ink);
+  background: var(--brand);
 }
 
 .menu-button {
-  display: inline-block;
-  padding: 0.4rem 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 0.45rem 0.8rem;
   border: 1px solid var(--accent);
-  border-radius: 0.25rem;
-  background: transparent;
+  border-radius: 0.35rem;
+  background: var(--brand-deep);
   color: var(--surface);
   cursor: pointer;
+  font-weight: 750;
 }
 
-.nav-links,
-footer nav ul {
-  display: flex;
+.nav-links { display: none; }
+.nav-links, footer ul {
   flex-wrap: wrap;
-  gap: var(--space-2);
   align-items: center;
+  gap: var(--space-3);
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.nav-links {
-  display: none;
-}
-
-.site-nav a,
-footer a {
+.site-nav a, footer a {
   color: var(--surface);
-  text-decoration: none;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 0.3rem;
 }
 
-.site-nav a:hover,
-.site-nav a:focus,
-footer a:hover,
-footer a:focus {
-  color: var(--accent);
-}
+.site-nav a:hover, footer a:hover { color: var(--accent); }
 
-/* Box model: center and cap the reading width. */
+/* A4, A7 - Fluid, centered content using %, min(), calc(), and rem spacing. */
 main {
   grid-area: main;
+  min-width: 0;
   width: min(90%, 60rem);
   margin: 0 auto;
   padding: var(--space-4) 0;
 }
 
-/* Banner: use a fluid width, overlay, and readable heading scale. */
 .hero {
   position: relative;
   overflow: hidden;
   width: calc(100% - 1rem);
   margin: 0 auto var(--space-3);
-  padding: clamp(2rem, 8vw, 5rem) var(--space-3);
-  background: linear-gradient(120deg, var(--brand-deep), var(--brand));
+  padding: clamp(3rem, 10vw, 6rem) var(--space-3);
+  background: linear-gradient(135deg, var(--brand-deep), var(--brand));
   color: var(--surface);
-  text-align: center;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-strong);
 }
 
+/* A3 - A 40% black overlay keeps hero text readable. */
 .hero::after {
   position: absolute;
   inset: 0;
-  background: rgb(0 0 0 / 40%);
+  background: var(--overlay);
   content: "";
 }
 
-.hero > * {
-  position: relative;
-  z-index: 1;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.eyebrow {
-  margin-top: 0;
-  color: var(--accent);
-  font-size: var(--type-small);
-  font-weight: 700;
-  letter-spacing: 0.12rem;
-  text-transform: uppercase;
-}
-
-h1,
-h2,
-h3 {
-  line-height: 1.2;
-}
-
-h1 {
-  max-width: 18ch;
-  margin-top: 0;
-  font-size: var(--type-h1);
-}
-
-h2 {
-  font-size: var(--type-h2);
-}
-
-h3 {
-  font-size: var(--type-h3);
-}
-
-.hero-quote {
-  max-width: 50ch;
-  margin-bottom: 0;
+.hero > * { position: relative; z-index: 1; }
+.hero > p:last-of-type { margin-top: var(--space-3); font-size: 1.1rem; }
+.hero blockquote {
+  margin: var(--space-4) 0 0;
+  padding-left: var(--space-2);
+  border-left: 0.25rem solid var(--accent);
   font-style: italic;
 }
 
-details,
-.events,
-#important-info,
-#submit {
+.eyebrow {
+  margin: 0 0 var(--space-1);
+  color: var(--accent);
+  font-size: var(--type-small);
+  font-weight: 800;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+}
+
+.faq, .events, #important-info, #submit {
   margin: 0 0 var(--space-3);
   padding: var(--space-3);
   border: 1px solid var(--line);
-  border-radius: 0.5rem;
   background: var(--surface);
   box-shadow: var(--shadow);
 }
 
-details summary {
-  color: var(--brand-deep);
-  cursor: pointer;
-  font-weight: 700;
+.faq { border-radius: 0.5rem; }
+.faq summary { color: var(--brand); cursor: pointer; font-weight: 800; }
+
+.section-heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-1) var(--space-3);
+  margin-bottom: var(--space-3);
 }
 
-.events {
-  border-top: 0.25rem solid var(--brand);
-}
+.section-heading > p { margin: 0; color: var(--muted); }
+.events { min-width: 0; border-top: 0.3rem solid var(--accent); }
 
-.section-title,
-#submit h2 {
-  margin-top: 0;
-  color: var(--brand-deep);
-}
-
-/* Card grid: auto-fit cards without a media query. */
-.events > ul {
+/* A8, B3, B4 - Cards auto-fit into as many 15rem columns as space permits. */
+.event-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   gap: var(--space-2);
-  margin: var(--space-3) 0;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
 
-/* Card component: padding, border, radius, margin, and soft shadow. */
-.events article {
+.event-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-2);
   min-height: 100%;
   margin: 0;
   padding: var(--space-2);
   border: 1px solid var(--line);
-  border-radius: 0.5rem;
+  border-radius: 0.6rem;
   background: var(--paper);
   box-shadow: var(--shadow);
 }
 
-.events article h3 {
-  margin-top: 0;
-  color: var(--brand-deep);
-}
-
-.events article p {
-  margin: 0.25rem 0;
-  color: var(--muted);
-  font-size: var(--type-small);
-}
-
-.schedule {
-  width: 100%;
-  margin-top: var(--space-2);
-  border-collapse: collapse;
-}
-
-.schedule caption {
-  margin-bottom: var(--space-1);
-  font-weight: 700;
-  text-align: left;
-}
-
-.schedule th,
-.schedule td {
+.event-card time {
+  align-self: start;
+  min-width: 3.3rem;
   padding: var(--space-1);
-  border-bottom: 1px solid var(--line);
-  text-align: left;
+  border-radius: 0.35rem;
+  background: var(--brand);
+  color: var(--surface);
+  font-size: var(--type-small);
+  font-weight: 800;
+  text-align: center;
 }
 
-#important-info {
-  border-left: 0.25rem solid var(--accent);
-}
+.event-card time span { display: block; color: var(--accent); font-size: var(--type-h2); line-height: 1; }
+.event-card h3 { margin: 0 0 var(--space-1); color: var(--brand-deep); }
+.event-card p { margin: 0.15rem 0; color: var(--muted); font-size: var(--type-small); }
 
-#important-info h2 {
-  margin-top: 0;
-}
+.table-wrap { overflow-x: auto; margin-top: var(--space-4); }
+.schedule { width: 100%; border-collapse: collapse; }
+.schedule caption { margin-bottom: var(--space-1); color: var(--brand-deep); font-weight: 800; text-align: left; }
+.schedule th, .schedule td { padding: 0.7rem; border-bottom: 1px solid var(--line); text-align: left; }
+.schedule th { background: var(--brand-deep); color: var(--surface); }
 
-form {
-  display: grid;
-  gap: var(--space-1);
-}
+#important-info { border-left: 0.35rem solid var(--accent); background: var(--accent-soft); }
+#important-info ul { padding-left: var(--space-3); }
+#important-info li + li { margin-top: var(--space-1); }
+.desktop-note { display: none; color: var(--muted); font-size: var(--type-small); }
 
-label,
-legend {
-  font-weight: 700;
-}
+form { display: grid; gap: var(--space-2); }
+.field { display: grid; gap: 0.35rem; }
+label, legend { color: var(--brand-deep); font-weight: 750; }
 
 input:not([type="radio"]):not([type="checkbox"]),
 select,
 textarea {
   width: 100%;
-  padding: 0.625rem;
+  padding: 0.7rem;
   border: 1px solid var(--line);
-  border-radius: 0.25rem;
+  border-radius: 0.35rem;
   background: var(--surface);
   color: var(--ink);
 }
 
-textarea {
-  min-height: 6rem;
-}
+textarea { min-height: 7rem; resize: vertical; }
+fieldset { margin: 0; padding: var(--space-2); border: 1px solid var(--line); border-radius: 0.35rem; }
+.choice { display: block; color: var(--ink); font-weight: 500; }
+.choice + .choice { margin-top: var(--space-1); }
 
-fieldset {
-  margin: var(--space-1) 0;
-  padding: var(--space-2);
-  border: 1px solid var(--line);
-  border-radius: 0.25rem;
-}
-
-button[type="submit"] {
+.submit-button {
   justify-self: start;
-  margin-top: var(--space-1);
   padding: 0.75rem 1.5rem;
-  border: 0;
-  border-radius: 0.25rem;
+  border: 1px solid var(--brand-deep);
+  border-radius: 0.35rem;
   background: var(--brand);
   color: var(--surface);
   cursor: pointer;
-  font-weight: 700;
+  font-weight: 800;
 }
 
-button[type="submit"]:hover,
-button[type="submit"]:focus {
-  background: var(--brand-deep);
-}
+.submit-button:hover { background: var(--brand-deep); }
 
 footer {
   grid-area: footer;
   padding: var(--space-4) 5%;
-  background: var(--ink);
+  background: var(--brand-deep);
   color: var(--surface);
   text-align: center;
 }
 
-footer nav ul {
-  justify-content: center;
-  margin-bottom: var(--space-2);
-}
+footer ul { display: flex; justify-content: center; }
+footer p { margin: var(--space-3) auto 0; color: var(--line); }
 
-footer p {
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.desktop-note {
-  display: none;
-}
-
-/* Responsive breakpoint: reveal links and add a second card column. */
+/* B5 - First breakpoint: reveal nav links and make the form two columns. */
 @media (min-width: 40rem) {
-  .menu-button {
-    display: none;
-  }
-
-  .nav-links {
-    display: flex;
-  }
-
-  .events > ul {
-    grid-template-columns: repeat(2, minmax(15rem, 1fr));
-  }
+  .menu-button { display: none; }
+  .nav-links { display: flex; }
+  form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .field-wide, .submit-button { grid-column: 1 / -1; }
 }
 
-/* Responsive breakpoint: place the event list beside supporting panels. */
+/* B2, B5 - Second breakpoint: supporting panels sit beside the event list. */
 @media (min-width: 64rem) {
   main {
     display: grid;
     align-items: start;
     grid-template-columns: minmax(0, 2fr) minmax(14rem, 1fr);
-    grid-template-areas:
-      "hero hero"
-      "events faq"
-      "events info"
-      "submit submit";
+    grid-template-areas: "hero hero" "events faq" "events info" "submit submit";
     gap: var(--space-3);
   }
 
-  .hero {
-    grid-area: hero;
-  }
+  .hero { grid-area: hero; }
+  .faq { grid-area: faq; margin-bottom: 0; }
+  .events { grid-area: events; margin-bottom: 0; }
+  #important-info { grid-area: info; margin-bottom: 0; }
+  #submit { grid-area: submit; }
+  .desktop-note { display: block; }
+}
 
-  main > details {
-    grid-area: faq;
-    margin-bottom: 0;
-  }
-
-  .events {
-    grid-area: events;
-    margin-bottom: 0;
-  }
-
-  #important-info {
-    grid-area: info;
-    margin-bottom: 0;
-  }
-
-  #submit {
-    grid-area: submit;
-  }
-
-  .desktop-note {
-    display: block;
-  }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }

@@ -1,50 +1,50 @@
 # Campus Event Board Notes
 
-Team members: Rakshit kumar (20261651069), Sakshi kuntal (20261651076), Ravi singh singal (20261651072), Yash anand (20261651099), Ankit chaturvedi (20261651013)
+**Team members:** Rakshit Kumar (20261651069), Sakshi Kuntal (20261651076), Ravi Singh Singal (20261651072), Yash Anand (20261651099), Ankit Chaturvedi (20261651013)
 
 ## 1. Palette
 
 The palette in `style.css` is:
 
-- `--brand: #c94f2d`
-- `--brand-deep: hsl(14 64% 28%)`
-- `--accent: rgb(244 183 64)`
-- `--ink: #24313a`
-- `--muted: rgb(82 96 105)`
-- `--paper: #fffaf3`
+- `--brand: #153e75`
+- `--brand-deep: hsl(219 70% 18%)`
+- `--accent: rgb(244 164 45)`
+- `--accent-soft: #fff1d6`
+- `--ink: #17243d`
+- `--muted: rgb(79 94 117)`
+- `--paper: #eef3f9`
 - `--surface: #ffffff`
-- `--line: #e4d8ca`
+- `--line: #cad5e2`
+- `--overlay: rgb(0 0 0 / 40%)`
 
-Named variables are better because one change updates the whole design. They also make rules easier to read than repeated color codes.
+Named variables are better than repeated color codes because a single edit updates the whole design, the names explain each color's purpose, and they keep the rules consistent.
 
 ## 2. Color formats
 
-- Hex: `--brand: #c94f2d` is the main brand color.
-- `rgb()`: `--accent: rgb(244 183 64)` is used for highlights and the navigation button border.
-- `hsl()`: `--brand-deep: hsl(14 64% 28%)` is used for the header and headings.
-- Semi-transparent color: `rgb(0 0 0 / 40%)` is the hero overlay, which improves contrast over the banner background.
+- Hex: `--brand: #153e75` supplies the primary campus blue.
+- RGB: `--accent: rgb(244 164 45)` supplies the saffron highlights and date numerals.
+- HSL: `--brand-deep: hsl(219 70% 18%)` supplies the header, footer, and hero base.
+- Semi-transparent color: `--overlay: rgb(0 0 0 / 40%)` darkens the hero background so its white text remains easy to read.
 
 ## 3. Relative units
 
-`rem` respects the user's root font size, so text and spacing can scale more accessibly than fixed pixels. The stylesheet uses `width: calc(100% - 1rem)` for the hero, which leaves a small edge space while keeping it fluid. It uses `font-size: clamp(1.5rem, 4vw, 3rem)` for the main heading, which grows with the viewport but stays within readable limits.
+`rem` units follow the user's root font size, so text and spacing scale more accessibly than fixed pixels. The hero uses `width: calc(100% - 1rem)` to remain fluid while leaving a small inset. The main heading uses `font-size: clamp(2rem, 7vw, 4.5rem)` so it grows with the viewport without becoming too small or too large.
 
 ## 4. Box model calculation
 
-With `content-box`, the rendered width is `200px + 20px + 20px + 5px + 5px = 250px`.
-
-With `border-box`, the rendered width is `200px`; the content area becomes `150px` after subtracting padding and borders. This project uses `box-sizing: border-box` because declared widths include padding and borders, making responsive layouts easier to control.
+For `width: 200px; padding: 20px; border: 5px`, `content-box` renders at `200 + 20 + 20 + 5 + 5 = 250px`. With `border-box`, the rendered width stays `200px`, leaving `150px` for the content. This project uses `* { box-sizing: border-box; }` so padding and borders are included in declared widths and responsive layouts are easier to predict.
 
 ## 5. Box model layers
 
-From inside out: content, padding, border, and margin.
+From the inside out: content, padding, border, margin.
 
 ## 6. Responsive card grid
 
-`repeat(auto-fit, minmax(15rem, 1fr))` creates as many columns as fit, gives each card a minimum width of `15rem`, and shares remaining space between cards. It needs no media query because the grid automatically recalculates the number of columns as the available width changes.
+`repeat(auto-fit, minmax(15rem, 1fr))` creates as many columns as fit, prevents a card from becoming narrower than `15rem`, and shares any remaining space evenly. Grid recalculates the column count automatically, so this card reflow needs no media query.
 
 ## 7. Mobile-first design
 
-Phone styles are the base because they provide a usable layout for the smallest screen first. `min-width` queries progressively add columns when there is enough room, keeping the CSS simple and resilient. The viewport meta tag makes the browser use the device width instead of a wide virtual desktop, so responsive CSS works correctly on phones.
+Phone styles are the base because every device gets a simple, usable single-column layout first. `min-width` media queries progressively add the full navigation, form columns, and sidebar only when space is available. The viewport meta tag makes the browser use the real device width instead of a wide virtual layout viewport, which is essential for the breakpoints to behave correctly on phones.
 
 ## 8. Grid map
 
@@ -56,29 +56,23 @@ grid-template-areas:
   "submit submit";
 ```
 
-The hero and submit regions span both columns. The events region spans two rows because it occupies the same grid area in the `events/faq` and `events/info` rows.
+The hero and submit regions span both columns by repeating their area names across a row. The events region spans two rows because `events` appears in the first column of both supporting-panel rows.
 
 ## 9. Responsive images and type
 
-`img { max-width: 100%; height: auto; }` keeps images inside their containers without a media query. `clamp(1.5rem, 4vw, 3rem)` makes the heading fluid without a media query.
+Images use `img { max-width: 100%; height: auto; }`, so they never overflow their containers. The heading uses `clamp(2rem, 7vw, 4.5rem)`, so its type scales fluidly. Neither technique needs a media query.
 
-## 10. Submission checklist
+## 10. Repository and submission checklist
 
-The project includes `README.md`, the final `index.html`, and the final `style.css`. Git should be initialized in this folder with several descriptive commits so the history shows the work. A GitHub repository named `event-board` and its Pages URL should be added here after publishing.
-
-Repository link: https://github.com/rkstlohchab/event-board
-
-Pages link: https://rkstlohchab.github.io/event-board/
-
-Screenshots included in the project:
-
-- `screenshot-event-cards.png` - labeled styled event cards.
-- `screenshot-phone.png` - labeled narrow phone layout with the compact menu.
-- `screenshot-desktop.png` - labeled wide desktop layout with the responsive reflow.
-- `screenshot-validator.png` - W3C validator browser capture. It records the validator's cached result for the previously deployed stylesheet. The reported `pointer-events` error was removed from the final `style.css`; the fresh validator target is published as `style-final.css` while GitHub Pages finishes deploying it.
-
-The CSS rules in `style.css` include short comments for the design system, box model, card component, responsive images, and responsive breakpoints. `Notes.pdf` contains these answers and ends with the final `index.html` and `style.css` code appendix.
+- Repository: https://github.com/rkstlohchab/event-board
+- GitHub Pages: https://rkstlohchab.github.io/event-board/
+- The repository includes `README.md`, `index.html`, `style.css`, retained lab CSS files, images, notes, and a readable commit history.
+- `screenshot-event-cards.png` shows all six styled cards.
+- `screenshot-phone.png` shows the narrow single-column layout and compact menu.
+- `screenshot-desktop.png` shows the wide grid, full navigation, and responsive reflow.
+- `screenshot-validator.png` shows the W3C CSS Validator result: **Congratulations! No Error Found.**
+- `style.css` contains comments identifying the design system, box model, card component, responsive images, Grid, and mobile-first breakpoints.
 
 ## Code appendix
 
-The final code appendix is the complete contents of [`index.html`](index.html) followed by [`style.css`](style.css). These are the exact final files used by the project and are kept as separate readable source files for submission and review.
+The PDF version of these notes ends with the complete final `index.html` and `style.css`, exactly as submitted.
